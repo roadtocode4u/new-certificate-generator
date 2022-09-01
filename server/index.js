@@ -61,15 +61,15 @@ app.get('/get/user', async (req, res) => {
 
 app.post('/add/certificate', async (req, res) => {
   const certificate = new Certificate({
-    student_name: req.body.student_name,
-    student_id: req.body.student_id,
-    student_email: req.body.student_email,
-    course_name: req.body.course_name,
-    starting_date: req.body.starting_date,
-    ending_date: req.body.ending_date,
-    certificate_id: req.body.certificate_id,
-    certificate_url: req.body.certificate_url,
-    proof_work: req.body.proof_work
+    studentName: req.body.studentName,
+    studentId: req.body.studentId,
+    studentEmail: req.body.studentEmail,
+    courseName: req.body.courseName,
+    startingDate: req.body.startingDate,
+    endingDate: req.body.endingDate,
+    certificateId: req.body.certificateId,
+    certificateUrl: req.body.certificateUrl,
+    proofWork: req.body.proofWork
   });
 
   await certificate.save();

@@ -1,39 +1,39 @@
 const mongoose = require('mongoose');
 
 const CertificateSchema = new mongoose.Schema({
-    student_name:{
+    studentName:{
         type: String,
         required: true
     },
-    student_id:{
+    studentId:{
         type: String,
         required: true
     },
-    student_email:{
+    studentEmail:{
         type: String,
         required: true
     },
-    course_name:{
+    courseName:{
         type: String,
         required: true
     },
-    starting_date:{
+    startingDate:{
         type: String,
         required: true
     },
-    ending_date:{
+    endingDate:{
         type: String,
         required: true
     },
-    certificate_id:{
+    certificateId:{
         type: String,
         required: true
     },
-    certificate_url:{
+    certificateUrl:{
         type: String,
         required: true
     },
-    proof_work:{
+    proofWork:{
         type: String,
         required: true
     }
