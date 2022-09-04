@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path'); 
 const mongoose = require('mongoose')
 
-const healthCheck = require("./models/health");
 const User = require("./models/User");
 const Proof = require("./models/Proof");
 const Certificate = require("./models/Certificate");
@@ -19,20 +18,8 @@ mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true, useUnifiedT
 });
 
 app.get('/health', async (req, res) => {
-  const health = await healthCheck.find();
   res.send({
-    status: "success",
-    message: "Health check found",
-    data: health,
-  });
-});
-
-app.get('/get/health', async (req, res) => {
-  const health = await healthCheck.find();
-  res.send({
-    status: "success",
-    message: "Health check found",
-    data: health,
+    status: "success"
   });
 });
 
@@ -60,22 +47,27 @@ app.get('/get/user', async (req, res) => {
 
 
 app.post('/add/certificate', async (req, res) => {
+
   const certificate = new Certificate({
     studentName: req.body.studentName,
-    studentId: req.body.studentId,
+    user: req.body.user,
     studentEmail: req.body.studentEmail,
     courseName: req.body.courseName,
     startingDate: req.body.startingDate,
     endingDate: req.body.endingDate,
     certificateId: req.body.certificateId,
     certificateUrl: req.body.certificateUrl,
-    proofWork: req.body.proofWork
+    proofOfWorks: req.body.proofOfWorks,
   });
 
-  await certificate.save();
+
+
+  const savedCertificate = await certificate.save();
+ 
   res.send({
     status: "success",
-    message: "Certificate added successfully"
+    message: "Certificate added successfully",
+    data: savedCertificate
   });
 });
 

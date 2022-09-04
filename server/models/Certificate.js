@@ -5,10 +5,6 @@ const CertificateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    studentId:{
-        type: String,
-        required: true
-    },
     studentEmail:{
         type: String,
         required: true
@@ -33,11 +29,11 @@ const CertificateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    proofWork:{
-        type: String,
-        required: true
-    }
-});
+    proofOfWorks: [{ type: String}],
+    // proofOfWorks: [{type: mongoose.Types.ObjectId, ref: 'Proof', required: true}], 
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
+ })
+
 
 const Certificate = mongoose.model('Certificate', CertificateSchema);
 module.exports = Certificate;
