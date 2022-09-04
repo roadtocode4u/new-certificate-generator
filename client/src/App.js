@@ -1,13 +1,28 @@
-import './App.css';
+import "./App.css";
+import CertificatePdf from "./components/CertificatePdf";
+import { BrowserRouter as Router, Routes , Route } from "react-router-dom";
+import Profile from "./components/Profile";
+import CertificateProof from "./components/CertificateProof";
 
 function App() {
   return (
-    <div className="container">
-      {/* Remove this code and place your own code here. */}
-      <div class="d-flex align-items-center justify-content-center" style={{height: '80vh'}}>
-        <h1>MERN Starter is Up and Running 🚀</h1>
-      </div>
-    </div>
+    <>
+      {/* <CertificatePdf/> */}
+
+      {/* browser router  */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<CertificatePdf />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/proof-of-work" element={<CertificateProof />} />
+        </Routes>
+      </Router>
+      
+
+
+
+     
+    </>
   );
 }
 
